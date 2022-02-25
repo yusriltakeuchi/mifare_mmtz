@@ -19,6 +19,12 @@ class MifareMmtz {
     return _mapEnableStats(response);
   }
 
+  /// Get current mifare id
+  static Future<String> getId() async {
+    final response = await _channel.invokeMethod("getId") as String;
+    return response;
+  }
+
   static NFCStatus _mapEnableStats(String status) {
     switch (status) {
       case "Enabled":

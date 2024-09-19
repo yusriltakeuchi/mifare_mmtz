@@ -5,7 +5,7 @@ author: Yusril Rapsanjani<yuranicorp@gmail.com>
 homepage: https://github.com/yusriltakeuchi/mifare_mmtz.git
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.20.0"
 
 dependencies:

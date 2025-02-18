@@ -11,20 +11,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  NFCStatus nfcStatus;
-  String mifareID;
+  NFCStatus? nfcStatus;
+  String? mifareID;
   void checkSupport() async {
     final result = await MifareMmtz.isNFCEnable();
-    if (result != null) {
-      setState(() {
-        nfcStatus = result;
-      });
-    }
+    setState(() {
+      nfcStatus = result;
+    });
   }
 
   void readMifareId() async {
     final result = await MifareMmtz.getId();
-    if (result != null) {
+    if (result.isNotEmpty) {
       setState(() {
         mifareID = result;
       });
@@ -62,15 +60,17 @@ class _MyAppState extends State<MyApp> {
               ),
 
               SizedBox(height: 20,),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => readMifareId(),
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.blue)
+                ),
                 child: Text(
                   "Read Mifare ID",
                   style: TextStyle(
                     color: Colors.white
                   ),
                 ),
-                color: Colors.blue,
               )
             ],
           ),
